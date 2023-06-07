@@ -121,5 +121,12 @@ program bcast
     print*, array_local(local_size+2, :, :)
   endif
   
+<<<<<<< HEAD
+=======
+  !delete MPI_Types
+  call MPI_Type_Free(left_bound, mpierr)
+  call MPI_Type_Free(right_bound, mpierr)
+  
+>>>>>>> ab0edd158cfc8e2f4dd6755d82a140377d07ad00
   call MPI_Finalize(mpierr)
 end program bcast
