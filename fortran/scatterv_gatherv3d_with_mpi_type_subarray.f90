@@ -68,17 +68,6 @@ program ex_scatterv
   !allocate sendcoutns and displacements arrays for braodcasting
   allocate(sendcounts(num_procs), displacements(num_procs))
 
-  !gather displacements and sendcounts for all ranks
-  !call MPI_Allgather(str_idx, 1, MPI_INTEGER, displacements, 1, MPI_INTEGER, &
-  !  MPI_COMM_WORLD, mpierr)
-  !call MPI_Allgather(local_size, 1, MPI_INTEGER, sendcounts, 1, &
-  !  MPI_INTEGER, MPI_COMM_WORLD, mpierr)
-
-  !total sendcounts and displacements 
-  !sendcounts = sendcounts*ny*nz
-  !displacements = displacements - 1 !Array index starts with 0 in MPI (C)
-  !displacements = displacements*ny*nz
-
   !Scatterning using subarray type 
   sizes = [nx, ny, nz]
   sub_sizes = [local_size, ny, nz]
