@@ -111,9 +111,6 @@ program bcast
   elseif(rank==1) then
     call MPI_Send(array_local, 1, left_bound, 0, 100, mpi_comm_world, mpierr)
   endif
-
-  !call MPI_sendrecv(array_local, 1, left_bound, 0, 99, array_local, 1, &
-  !  right_bound, 1, 99, mpi_comm_world, status, mpierr)
  
   if(rank==0) then 
   print*,"----------------------After receiving ------------------------------"
@@ -121,12 +118,9 @@ program bcast
     print*, array_local(local_size+2, :, :)
   endif
   
-<<<<<<< HEAD
-=======
   !delete MPI_Types
   call MPI_Type_Free(left_bound, mpierr)
   call MPI_Type_Free(right_bound, mpierr)
-  
->>>>>>> ab0edd158cfc8e2f4dd6755d82a140377d07ad00
+
   call MPI_Finalize(mpierr)
 end program bcast
