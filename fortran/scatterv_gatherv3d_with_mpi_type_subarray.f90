@@ -48,11 +48,11 @@ program ex_scatterv
   !assign values to the array
   if(rank==0) then
     do k=1,nz
-    do j=1,ny
-    do i=1,nx
-    array(i,j,k) = (i-1)+(j-1)*nx+(k-1)*nx*ny
-    end do
-    end do 	
+      do j=1,ny
+        do i=1,nx
+          array(i,j,k) = (i-1)+(j-1)*nx+(k-1)*nx*ny
+        end do
+      end do 	
     end do 
     print*, "Before scattering..."
     print*, array   
