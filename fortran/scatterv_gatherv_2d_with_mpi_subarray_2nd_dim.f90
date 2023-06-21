@@ -1,4 +1,4 @@
-!Example code to Scatterv and Gatherv 3D array using MPI subarray 
+!Example code to Scatterv and Gatherv 2D array using MPI subarray 
 !derived data type.
 
 !For example, a 2D array of size (3,5) can be distributed
