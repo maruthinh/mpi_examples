@@ -5,6 +5,38 @@
 !to rank 0 and rank 1 as (3,3) and (3,2) or to 3 ranks 
 !(3,2), (3,2), (3,1), etc. 
 
+!for ex global array-like
+! 0 3 6 9 12 
+! 1 4 7 10 13
+! 2 5 8 11 14
+
+!will be distributed among 2 procs as follows
+!rank 0
+! 0 3 6  
+! 1 4 7 
+! 2 5 8 
+
+!rank 1
+! 9 12 
+! 10 13
+! 11 14
+
+!among 3 procs
+!rank 0
+! 0 3   
+! 1 4  
+! 2 5  
+
+!rank 1
+! 6 9  
+! 7 10 
+! 8 11 
+
+!rank 2
+! 12
+! 13
+! 14
+
 program ex_scatterv
   use mpi  
   use iso_fortran_env, only : real64 
