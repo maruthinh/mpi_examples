@@ -1,9 +1,38 @@
-!Example code to Scatterv and Gatherv 3D array using MPI subarray 
+!Example code to Scatterv and Gatherv 2D array using MPI subarray 
 !derived data type.
 
-!For example, a 2D array of size (3,5) can be distributed
-!to rank 0 and rank 1 as (3,3) and (3,2) or to 3 ranks 
-!(3,2), (3,2), (3,1), etc. 
+!For example, a 2D array of size (5,3) can be distributed
+!to rank 0 and rank 1 as (3,3) and (2,3) or to 3 ranks 
+!(2,3), (2,3), (1,3), etc. 
+
+!Global 2D array
+! 0 5 10
+! 1 6 11
+! 2 7 8
+! 3 8 13
+! 4 9 14 
+
+!Scattered 2D arrays among 2 procs will be
+!rank 0
+! 0 5 10
+! 1 6 11
+! 2 7 8
+
+!rank 1
+! 3 8 13
+! 4 9 14 
+
+!Scattered 2D arrays among 3 procs will be
+!rank 0
+! 0 5 10
+! 1 6 11
+
+!rank 1
+! 2 7 8
+! 3 8 13
+
+!rank 2
+! 4 9 14 
 
 program ex_scatterv
   use mpi  
@@ -34,7 +63,7 @@ program ex_scatterv
       call MPI_Abort(mpi_comm_world, 1, mpierr)
     endif
   endif
-
+  
   start_time=MPI_Wtime()
   !allocate in the root rank
   if(rank==0) then
@@ -54,7 +83,6 @@ program ex_scatterv
     print*, array
   endif
   
-
   !distribute the 3d array among different procs 
   call distribute_points(nx, rank, num_procs, str_idx, end_idx)
   local_size = end_idx - str_idx + 1
