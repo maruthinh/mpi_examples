@@ -58,8 +58,8 @@ program ex_scatterv
   ny=3
   
   if(rank==0) then 
-    if(num_procs>ny) then 
-      print*, "Number of procs should be less than or equal to second dimension of the array"
+    if(num_procs>nx) then 
+      print*, "Number of procs should be less than or equal to the first dimension of the array"
       call MPI_Abort(mpi_comm_world, 1, mpierr)
     endif
   endif
