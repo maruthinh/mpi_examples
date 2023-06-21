@@ -60,7 +60,7 @@ program ex_scatterv
   local_size = end_idx - str_idx + 1
   
   !allocate local(for each rank) arrays
-  allocate(array_local(nx, local_size))
+  allocate(array_local(nx, 0:local_size+1))
 
   !allocate sendcoutns and displacements arrays for braodcasting
   allocate(sendcounts(num_procs), displacements(num_procs))
@@ -79,10 +79,10 @@ program ex_scatterv
   start_time=MPI_Wtime()
   !Scatterning using subarray type 
   sizes = [nx, ny]
-  recv_sizes=[nx, local_size]
+  recv_sizes=[nx, local_size+2]
   sub_sizes = [nx, 1]
   starts = [0, 0] 
-  recv_starts = [0, 0] 
+  recv_starts = [0, 1] 
 
   !to get extent of MPI_DOUBLE_PRECISION
   call MPI_Type_get_extent(MPI_DOUBLE_PRECISION, lb, extent, mpierr)
