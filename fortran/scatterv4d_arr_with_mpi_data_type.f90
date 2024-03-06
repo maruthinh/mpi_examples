@@ -104,7 +104,7 @@ program test_scatterv_gatherv
     call MPI_Type_commit(resize_rtype, mpierr)
 
     call MPI_Scatterv(g_arr, scounts, displs, resize_stype, &
-    l_arr, scounts(rank), resize_rtype, 0, MPI_COMM_WORLD, mpierr)
+    l_arr, scounts(rank + 1), resize_rtype, 0, MPI_COMM_WORLD, mpierr)
 
   end subroutine scatter4D_arr
 end program test_scatterv_gatherv
