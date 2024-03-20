@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
     // serial version
     // pi = 0.0;
-    // for (int i = rank; i < n; i++)
+    // for (int i = 0; i < n; i++)
     // {
     //     lim1 = i * dx;
     //     lim2 = lim1 + dx;
