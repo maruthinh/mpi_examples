@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
     // {
     //     lim1 = i * dx;
     //     lim2 = lim1 + dx;
-    //     lim1 = lim2;
     //     mid_pt = (lim2 + lim1) / 2.0;
     //     pi += (4.0 / (1 + mid_pt * mid_pt)) * dx;
     // }
@@ -38,7 +37,6 @@ int main(int argc, char *argv[])
     {
         lim1 = i * dx;
         lim2 = lim1 + dx;
-        lim1 = lim2;
         mid_pt = (lim2 + lim1) / 2.0;
         pi += (4.0 / (1 + mid_pt * mid_pt)) * dx;
     }
