@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
     if (!rank) {
       while (marked[++idx])
         prime = idx + 1;
-        // printf("Prime computed %d \n", prime);
+      // printf("Prime computed %d \n", prime);
     }
     MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);
   } while (prime * prime <= n); // sieve till prime^2 <= n
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
   }
 
   // for(int i=0; i<blk_size; i++){
-    // printf("%d index %d rank and %d marker \n", i, rank, marked[i]);
+  // printf("%d index %d rank and %d marker \n", i, rank, marked[i]);
   // }
 
   MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
